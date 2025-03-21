@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Theme from "./_components/ThemeToggle";
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
           Go to Dashboard
         </Link>
       </div>
-      {/* <Theme /> */}
     </section>
   );
 }
