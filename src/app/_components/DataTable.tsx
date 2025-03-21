@@ -60,45 +60,54 @@ const DataTable: React.FC<DataTableProps> = ({
       </div>
 
       {/* Data Table */}
-      <div role="table" aria-label="Posts Table" className="w-full">
-        <div
-          className="border-active hidden grid-cols-[6rem_1fr_2fr] border-b p-2 font-bold sm:grid sm:gap-4"
-          role="rowheader"
-        >
-          <h1 className="w-24" role="columnheader">
-            Post Id
-          </h1>
-          <p className="w-full" role="columnheader">
-            Title
-          </p>
-          <p role="columnheader">Body</p>
-        </div>
-        {data.map((post) => (
+      {data.length === 0 ? (
+        <div className="text-center">No posts found.</div>
+      ) : (
+        <div role="table" aria-label="Posts Table" className="w-full">
           <div
-            key={post.id}
-            className="border-active flex flex-col border-b p-2 sm:grid sm:grid-cols-[6rem_1fr_2fr] sm:gap-4"
-            role="row"
+            className="border-active hidden grid-cols-[6rem_1fr_2fr] border-b p-2 font-bold sm:grid sm:gap-4"
+            role="rowheader"
           >
-            <h1 className="w-24 text-xl font-medium sm:text-[16px]" role="cell">
-              <span className="sm:hidden">#</span>
-              {post.id}
+            <h1 className="w-24" role="columnheader">
+              Post Id
             </h1>
-            <p className="w-full font-semibold" role="cell">
-              {post.title}
+            <p className="w-full" role="columnheader">
+              Title
             </p>
-            <p role="cell" className="mt-2 mb-2 sm:mt-0 sm:mb-0">
-              {post.body}
-            </p>
+            <p role="columnheader">Body</p>
           </div>
-        ))}
-      </div>
+          {data.map((post) => (
+            <div
+              key={post.id}
+              className="border-active flex flex-col border-b p-2 sm:grid sm:grid-cols-[6rem_1fr_2fr] sm:gap-4"
+              role="row"
+            >
+              <h1
+                className="w-24 text-xl font-medium sm:text-[16px]"
+                role="cell"
+              >
+                <span className="sm:hidden">#</span>
+                {post.id}
+              </h1>
+              <p className="w-full font-semibold" role="cell">
+                {post.title}
+              </p>
+              <p role="cell" className="mt-2 mb-2 sm:mt-0 sm:mb-0">
+                {post.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Pagination */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={onPageChange}
-      />
+      {data.length > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+        />
+      )}
     </div>
   );
 };
