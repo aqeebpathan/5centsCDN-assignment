@@ -26,7 +26,7 @@ This project is a **Next.js** dashboard with the following features:
 ### **1. Clone the Repository**
 
 ```bash
-git clone url
+git clone https://github.com/aqeebpathan/5centsCDN-assignment
 cd <your-repo-folder>
 ```
 
